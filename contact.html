@@ -1,0 +1,51 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Contact · All Saints and Ascension</title>
+<meta name="description" content="Visit, call, or email All Saints and Ascension Episcopal Church in Northwoods, Missouri."/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="styles.css"/>
+</head><body>
+<div id="site-header"></div>
+
+<div class="page-hero"><div class="ph-inner">
+  <span class="hero-eyebrow">Reach Out</span>
+  <h1>Contact Us</h1>
+  <p>We'd love to hear from you, whether you're planning a first visit or have a question about our ministries.</p>
+</div></div>
+
+<section><div class="section-inner two-col narrow">
+  <div>
+    <div class="section-header"><h2>Come find us</h2></div>
+    <div class="events-list">
+      <div class="event-row"><div class="event-info"><h4>Address</h4><p>4520 Lucas and Hunt Rd., Northwoods, MO 63121</p></div></div>
+      <div class="event-row"><div class="event-info"><h4>Phone</h4><p><a href="tel:3143672314" style="color:var(--red);font-weight:600">(314) 367-2314</a> or (314) 361-0105</p></div></div>
+      <div class="event-row"><div class="event-info"><h4>Email</h4><p><a href="mailto:asa2018@sbcglobal.net" style="color:var(--red);font-weight:600">asa2018@sbcglobal.net</a></p></div></div>
+      <div class="event-row"><div class="event-info"><h4>Office Hours</h4><p>Rector: Tue–Fri, 9 AM–5 PM · Admin: Mon–Wed, 9 AM–3 PM</p></div></div>
+    </div>
+    <a href="https://maps.google.com/?q=4520+Lucas+and+Hunt+Rd+Northwoods+MO+63121" target="_blank" rel="noopener" class="btn-primary" style="margin-top:22px">Get Directions →</a>
+  </div>
+  <div class="info-card">
+    <h3 style="font-family:'Playfair Display',serif;color:var(--red);margin-bottom:16px">Send us a message</h3>
+    <div class="field"><label for="n">Name</label><input id="n"/></div>
+    <div class="field"><label for="e">Email</label><input id="e" type="email"/></div>
+    <div class="field"><label for="s">Subject</label><select id="s"><option>I'm planning a visit</option><option>Ministry / volunteering</option><option>Prayer request</option><option>General question</option></select></div>
+    <div class="field"><label for="m">Message</label><textarea id="m" rows="4"></textarea></div>
+    <button class="btn-primary" style="width:100%;border:none;cursor:pointer" onclick="ASA_send()">Send Message</button>
+    <p id="cmsg" style="margin-top:12px;font-size:.85rem;color:var(--green);display:none">Thank you! Your email app will open with your message ready to send.</p>
+  </div>
+</div></section>
+
+<section style="padding-top:0"><div class="section-inner">
+  <div class="img-frame" style="aspect-ratio:16/6;width:100%;padding:0;border:6px solid #fff">
+    <iframe title="Map" style="border:0;width:100%;height:100%" loading="lazy" src="https://maps.google.com/maps?q=4520%20Lucas%20and%20Hunt%20Rd%20Northwoods%20MO%2063121&output=embed"></iframe>
+  </div>
+</div></section>
+
+<div id="site-footer"></div>
+<script src="site.js"></script>
+<script>
+function ASA_send(){var n=document.getElementById('n').value,e=document.getElementById('e').value,s=document.getElementById('s').value,m=document.getElementById('m').value;
+window.location.href="mailto:asa2018@sbcglobal.net?subject="+encodeURIComponent("[Website] "+s)+"&body="+encodeURIComponent("From: "+n+" ("+e+")\n\n"+m);
+document.getElementById('cmsg').style.display='block';}
+</script>
+</body></html>
