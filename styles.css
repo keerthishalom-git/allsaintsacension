@@ -37,7 +37,8 @@ nav { display: flex; align-items: center; gap: 4px; }
 .hamburger span { width: 24px; height: 2px; background: var(--black); border-radius: 2px; display: block; }
 
 .hero { position: relative; height: 90vh; min-height: 580px; background: #1a0a0a; display: flex; align-items: center; overflow: hidden; }
-.hero-bg { position: absolute; inset: 0; background-image: url('https://allsaintsascension.com/wp-content/uploads/2024/07/bishop-deon-visitation-photo-july-21-2024-1-1754485455-e1722030639409.jpg'); background-size: cover; background-position: center top; opacity: 0.3; }
+.hero-bg { position: absolute; inset: 0; background-image: url('allsaints.jpg'); background-size: cover; background-position: center top; opacity: 0.3; transition: opacity 1s ease-in-out; }
+.hero-bg.fading { opacity: 0; }
 .hero-overlay { position: absolute; inset: 0; background: linear-gradient(120deg, rgba(26,10,10,0.85) 0%, rgba(61,16,16,0.6) 60%, rgba(26,42,10,0.4) 100%); }
 .hero-content { position: relative; max-width: 1200px; margin: 0 auto; padding: 0 40px; z-index: 2; }
 .hero-eyebrow { display: inline-block; background: var(--gold); color: var(--dark); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; padding: 5px 14px; border-radius: 20px; margin-bottom: 22px; }

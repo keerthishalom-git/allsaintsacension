@@ -73,3 +73,24 @@
 })();
 function ASA_open(){document.getElementById("mob").classList.add("open")}
 function ASA_close(){document.getElementById("mob").classList.remove("open")}
+
+/* ============================================================
+   Homepage hero background rotation.
+   Cycles through the images below with a smooth crossfade.
+   To add/remove/reorder images, just edit this list.
+   ============================================================ */
+(function(){
+  var HERO_IMAGES = ["allsaints.jpg","choir.jpg","peace.jpg","service.jpg"];
+  var INTERVAL_MS = 6000; // time each image stays on screen
+  var bg = document.querySelector(".hero-bg");
+  if(!bg || HERO_IMAGES.length < 2) return;
+  var i = 0;
+  setInterval(function(){
+    i = (i + 1) % HERO_IMAGES.length;
+    bg.classList.add("fading");
+    setTimeout(function(){
+      bg.style.backgroundImage = "url('" + HERO_IMAGES[i] + "')";
+      bg.classList.remove("fading");
+    }, 1000);
+  }, INTERVAL_MS);
+})();
