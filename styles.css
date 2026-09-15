@@ -36,7 +36,7 @@ nav { display: flex; align-items: center; gap: 4px; }
 .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; background: none; border: none; }
 .hamburger span { width: 24px; height: 2px; background: var(--black); border-radius: 2px; display: block; }
 
-.hero { position: relative; height: 90vh; min-height: 580px; background: #1a0a0a; display: flex; align-items: center; overflow: hidden; }
+.hero { position: relative; height: 70vh; min-height: 480px; background: #1a0a0a; display: flex; align-items: center; overflow: hidden; }
 .hero-bg { position: absolute; inset: 0; background-image: url('allsaints.jpg'); background-size: cover; background-position: center top; opacity: 0.65; transition: opacity 1s ease-in-out; }
 .hero-bg.fading { opacity: 0; }
 .hero-overlay { position: absolute; inset: 0; background: linear-gradient(100deg, rgba(15,5,5,0.92) 0%, rgba(26,10,10,0.75) 35%, rgba(26,10,10,0.25) 65%, rgba(26,10,10,0.05) 100%); }
