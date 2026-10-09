@@ -1,0 +1,5 @@
+{
+  "name": "asa-website",
+  "private": true,
+  "description": "All Saints and Ascension website (static site + small serverless API for the admin area)"
+}
