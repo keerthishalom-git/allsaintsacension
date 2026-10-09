@@ -139,6 +139,10 @@
       if (ev === 'SIGNED_OUT') { me = null; }
     });
     var s = await sb.auth.getSession();
+    if (s.data.session && !recovery && tooIdle()) {
+      await logout('You were signed out after a long time away, to keep the website safe.');
+      return;
+    }
     if (s.data.session) {
       if (recovery) { await loadMe(); return renderForcedPassword(true); }
       var ok = await loadMe();
@@ -168,15 +172,27 @@
   }
 
   /* ---------- idle sign-out ---------- */
+  // The time of the last activity is saved in the browser, so closing the tab and coming back
+  // later (without pressing Sign Out) still ends the session once 60 minutes have passed.
+  var ACT_KEY = 'asa-admin-last';
+  function lastActive() { try { return parseInt(localStorage.getItem(ACT_KEY) || '0', 10); } catch (e) { return 0; } }
+  function markActive() { try { localStorage.setItem(ACT_KEY, String(Date.now())); } catch (e) {} }
+  function tooIdle() { var t = lastActive(); return !!t && Date.now() - t > IDLE_MS; }
+
   function armIdle() {
-    function reset() { clearTimeout(idleTimer); idleTimer = setTimeout(function () { logout('You were signed out after a long time away, to keep the website safe.'); }, IDLE_MS); }
-    ['click', 'keydown', 'touchstart', 'mousemove'].forEach(function (e) { document.addEventListener(e, reset, { passive: true }); });
-    reset();
+    var lastMark = 0;
+    function act() { var n = Date.now(); if (n - lastMark > 15000) { lastMark = n; markActive(); } }
+    ['click', 'keydown', 'touchstart', 'mousemove', 'scroll'].forEach(function (e) { document.addEventListener(e, act, { passive: true }); });
+    markActive();
+    clearInterval(idleTimer);
+    idleTimer = setInterval(function () { if (tooIdle()) logout('You were signed out after a long time away, to keep the website safe.'); }, 30000);
+    document.addEventListener('visibilitychange', function () { if (!document.hidden && tooIdle()) logout('You were signed out after a long time away, to keep the website safe.'); });
   }
 
   async function logout(msg) {
     dirty = false;
-    clearTimeout(idleTimer);
+    clearInterval(idleTimer);
+    try { localStorage.removeItem(ACT_KEY); } catch (e) {}
     try { await sb.auth.signOut(); } catch (e) {}
     me = null;
     location.hash = '';

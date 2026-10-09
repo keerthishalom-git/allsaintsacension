@@ -57,7 +57,7 @@ See `TRAINING.md` (one-page guide for staff).
 | Add / remove people, change roles, reset passwords | Yes | No |
 
 Safeguards: you cannot remove or demote yourself, and there must always be at least one active Admin.
-Sessions sign out automatically after 60 minutes of inactivity.
+Sessions sign out after 60 minutes of inactivity, including when someone closes the tab without signing out and comes back later.
 
 ## Changing the first-Admin email
 Edit the email in `handle_new_user()` inside `supabase/schema.sql` and run it again (before creating that user).
