@@ -45,6 +45,15 @@ delete photos, or delete published items.
 
 See `TRAINING.md` (one-page guide for staff).
 
+## Keeping the free database awake
+
+Supabase's free plan **pauses a project after 7 days with no activity**. `/api/keepalive` is called once a day by a
+Vercel scheduled job (`crons` in `vercel.json`, 14:00 UTC) so that never happens. Check it in Vercel → project → *Settings → Cron Jobs*.
+It is not a guarantee: please also open the website and sign in to `/admin` once a month.
+If the website suddenly shows no events or the admin will not sign in, the project may be paused:
+Supabase dashboard → the project → **Restore project** (free, takes a few minutes, content is kept for 90 days).
+For a worry-free setup, the Supabase **Pro** plan (from $25/month) never pauses and adds daily backups.
+
 ## Roles
 
 | | Admin | Editor |
